@@ -33,7 +33,7 @@ const logoutUser = async () => {
         return res.data;
     } catch (error) {
         console.log("Logout failed: ", error);
-        return null;
+        throw handleApiError(error);
     }
 }
 
