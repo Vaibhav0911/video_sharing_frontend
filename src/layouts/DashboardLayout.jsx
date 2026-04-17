@@ -4,10 +4,10 @@ import {
   Navbar,
   Sidebar,
   MobileSidebar,
-  Footer,
+  PageHeader,
 } from "../components/shared";
 
-function MainLayout() {
+function DashboardLayout() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   return (
@@ -24,14 +24,16 @@ function MainLayout() {
           onClose={() => setIsMobileSidebarOpen(false)}
         />
 
-        <main className="min-h-[calc(100vh-64px)] flex-1 px-4 py-6 sm:px-6 lg:px-8">
+        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+          <PageHeader
+            title="Dashboard"
+            description="Manage your content, videos, and channel settings."
+          />
           <Outlet />
         </main>
       </div>
-
-      <Footer />
     </div>
   );
 }
 
-export default MainLayout;
+export default DashboardLayout;
