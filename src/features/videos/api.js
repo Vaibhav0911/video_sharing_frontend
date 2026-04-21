@@ -28,7 +28,7 @@ const uploadVideo = async ({
       thumbnail,
     });
 
-    const { data } = await axiosInstance.post("/video", formData);
+    const { data } = await axiosInstance.post("/videos", formData);
     return data;
   } catch (error) {
     throw handleApiError(error);
@@ -41,7 +41,7 @@ const getVideo = async ({ id, slug }) => {
   }
 
   try {
-    const { data } = await axiosInstance.get(`/video/${id}/${slug}`);
+    const { data } = await axiosInstance.get(`/videos/${id}/${slug}`);
     return data;
   } catch (error) {
     throw handleApiError(error);
@@ -50,7 +50,7 @@ const getVideo = async ({ id, slug }) => {
 
 const getVideos = async ({ page = 1, limit = 10 } = {}) => {
   try {
-    const { data } = await axiosInstance.get("/video", {
+    const { data } = await axiosInstance.get("/videos", {
       params: { page, limit },
     });
     return data;
@@ -76,7 +76,7 @@ const updateVideo = async ({ id, title, description, isPublised, thumbnail }) =>
       thumbnail,
     });
 
-    const { data } = await axiosInstance.patch(`/video/${id}`, formData);
+    const { data } = await axiosInstance.patch(`/videos/${id}`, formData);
     return data;
   } catch (error) {
     throw handleApiError(error);
@@ -89,7 +89,7 @@ const deleteVideo = async (id) => {
   }
 
   try {
-    const { data } = await axiosInstance.delete(`/video/${id}`);
+    const { data } = await axiosInstance.delete(`/videos/${id}`);
     return data;
   } catch (error) {
     throw handleApiError(error);

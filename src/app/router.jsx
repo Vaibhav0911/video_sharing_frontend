@@ -1,17 +1,31 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import WatchVideo from "../pages/WatchVideo";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
+import {AuthLayout, DashboardLayout, MainLayout, WatchLayout} from "../layouts";
+import {Home, Login, WatchVideo} from "../pages"
 
 const router = createBrowserRouter(
-    createRoutesFromElements(
-       <Route path="/" element={ <MainLayout /> } >
-           <Route path="/" element={ <Home /> } />
-           <Route path="/login" element={ <Login /> } />
-           <Route path="/watch-video/:id" element={ <WatchVideo /> } /> 
-       </Route>
-    )
-)
+  createRoutesFromElements(
+    <Route>
+      <Route element={<AuthLayout />}>
+        <Route path="/login" element={<Login />} />
+      </Route>
+
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+
+      <Route element={<WatchLayout />}>
+        <Route path="/watch-video/:videoId/:slug" element={<WatchVideo />} />
+      </Route>
+
+      <Route element={<DashboardLayout />}>
+        <Route path="" />
+      </Route>
+    </Route>
+  )
+);
 
 export default router;

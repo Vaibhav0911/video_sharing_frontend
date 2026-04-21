@@ -1,13 +1,69 @@
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import {
+  VideoPlayer,
+  VideoMeta,
+  VideoActions,
+  ChannelInfo,
+  RelatedVideos,
+} from "../features/videos/components";
+import { useDispatch, useSelector } from "react-redux";
+import { getVideoThunk } from "../features/videos/videoThunk";
 
 function WatchVideo() {
-  const { videoId } = useParams();
+  
+  const dispatch = useDispatch();
+  const { videoId, slug } = useParams();
+  const { selectedVideo, videos, loading, error } = useSelector(
+    (state) => state.videos
+  );
+
+  useEffect(() => {
+     dispatch(getVideoThunk({id: videoId, slug}))
+  }, [dispatch, videoId, slug])
+
+  if (loading && !selectedVideo) {
+    return <div className="text-white">Loading video...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-400">{error}</div>;
+  }
+
+  if (!selectedVideo) {
+    return <div className="text-white">Video not found</div>;
+  }
 
   return (
-    <section>
-      <h1 className="text-3xl font-bold">Watch Video</h1>
-      <p className="mt-2 text-zinc-400">Video ID: {videoId}</p>
-    </section>
+    <div className="grid gap-6 xl:grid-cols-[2fr_1fr]">
+      <div className="space-y-6">
+        <VideoPlayer
+          src={selectedVideo.videofile}
+          poster={selectedVideo.thumbnail}
+          title={selectedVideo.title}
+        />
+        <VideoMeta
+          title={selectedVideo.title}
+          views={selectedVideo.views}
+          createdAt={selectedVideo.createdAt || "Recently uploaded"}
+          description={selectedVideo.description}
+        />
+        <VideoActions />
+
+        <ChannelInfo
+          channelName={selectedVideo.owner?.username}
+          channelAvatar={selectedVideo.owner?.profileimage}
+          subscribers="1.2K"
+        />
+      </div>
+
+      <aside>
+        <RelatedVideos
+          videos={videos.filter((video) => video._id !== selectedVideo._id)}
+          loading={false}
+        />
+      </aside>
+    </div>
   );
 }
 
