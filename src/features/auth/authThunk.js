@@ -18,7 +18,7 @@ const loginThunk = createAsyncThunk(
     async (data, thunkAPI) => {
       try {
         const res = await loginUser(data);
-        return res.data;
+        return res;
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
       }

@@ -20,7 +20,7 @@ const loginUser = async (data) => {
 
   try {
     const res = await axiosInstance.post("/auth/login", data);
-    return res.data;
+    return res.data?.data?.data;
   } catch (error) {
     throw handleApiError(error);
   }
@@ -39,7 +39,7 @@ const logoutUser = async () => {
 const refreshAccessToken = async () => {
   try {
     const res = await axiosInstance.post("/auth/refresh-access-token");
-    return res.data;
+    return res.data?.data?.data;
   } catch (error) {
     throw handleApiError(error);
   }
@@ -48,7 +48,7 @@ const refreshAccessToken = async () => {
 const getCurrentUser = async () => {
   try {
     const res = await axiosInstance.get("/users/current-user");
-    return res.data;
+    return res?.data?.data;
   } catch (error) {
     throw handleApiError(error);
   }

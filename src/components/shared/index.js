@@ -11,3 +11,4 @@ export { default as ProtectedRoute } from "./ProtectedRoute";
 export { default as PublicOnlyRoute } from "./PublicOnlyRoute";
 export { default as AuthGuard } from "./AuthGuard";
 export { default as Footer } from "./Footer";
+export { default as UserMenu } from "./UserMenu";
