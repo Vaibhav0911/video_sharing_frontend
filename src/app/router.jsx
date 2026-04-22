@@ -3,14 +3,16 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
+import {ProtectedRoute, PublicOnlyRoute} from "../components/shared"
 import {AuthLayout, DashboardLayout, MainLayout, WatchLayout} from "../layouts";
-import {Home, Login, WatchVideo} from "../pages"
+import {Home, Login, WatchVideo, Signup} from "../pages"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route element={<AuthLayout />}>
+      <Route element={<PublicOnlyRoute> <AuthLayout /> </PublicOnlyRoute>}>
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Route>
 
       <Route element={<MainLayout />}>
@@ -21,7 +23,7 @@ const router = createBrowserRouter(
         <Route path="/watch-video/:videoId/:slug" element={<WatchVideo />} />
       </Route>
 
-      <Route element={<DashboardLayout />}>
+      <Route element={<ProtectedRoute> <DashboardLayout /> </ProtectedRoute>}>
         <Route path="" />
       </Route>
     </Route>

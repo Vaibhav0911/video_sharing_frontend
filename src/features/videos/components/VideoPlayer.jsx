@@ -4,6 +4,7 @@ function VideoPlayer({ src, poster, title }) {
   return (
     <div className="overflow-hidden rounded-2xl bg-black">
       <video
+        key={src}
         controls
         poster={poster}
         className="aspect-video w-full bg-black"

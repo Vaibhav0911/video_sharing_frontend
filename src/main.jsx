@@ -6,11 +6,14 @@ import router from "./app/router.jsx";
 import { RouterProvider } from "react-router-dom";
 import store from "./app/store.js";
 import { Provider } from "react-redux";
+import { AuthGuard } from "./components/shared";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <AuthGuard>
+        <RouterProvider router={router} />
+      </AuthGuard>
     </Provider>
-  </StrictMode>,
+  </StrictMode>
 );

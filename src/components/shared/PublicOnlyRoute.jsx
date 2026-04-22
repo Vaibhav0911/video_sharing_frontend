@@ -1,12 +1,19 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function PublicOnlyRoute({ isAuthenticated }) {
+function PublicOnlyRoute({ children }) {
+  const { isAuthenticated, authChecked } = useSelector((state) => state.auth);
+  const location = useLocation();
+
+  if (!authChecked) return null;
+
   if (isAuthenticated) {
-    return <Navigate to="/" replace />;
+    const redirectTo = location.state?.from?.pathname || "/";
+    return <Navigate to={redirectTo} replace />;
   }
 
-  return <Outlet />;
+  return children;
 }
 
 export default PublicOnlyRoute;

@@ -7,7 +7,7 @@ function VideoCard({ video, compact = false }) {
   if (!video) return null;
 
   const {
-    _id: videoId,
+    _id,
     slug,
     title,
     thumbnail,
@@ -16,7 +16,8 @@ function VideoCard({ video, compact = false }) {
     createdAt,
     owner,
   } = video;
-
+  
+  const videoId = _id;
   const watchLink = `/watch-video/${videoId}/${slug || ""}`;
 
   if (compact) {

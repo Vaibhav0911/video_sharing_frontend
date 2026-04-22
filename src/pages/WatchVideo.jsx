@@ -8,7 +8,7 @@ import {
   RelatedVideos,
 } from "../features/videos/components";
 import { useDispatch, useSelector } from "react-redux";
-import { getVideoThunk } from "../features/videos/videoThunk";
+import { getVideosThunk, getVideoThunk } from "../features/videos/videoThunk";
 
 function WatchVideo() {
   
@@ -19,8 +19,12 @@ function WatchVideo() {
   );
 
   useEffect(() => {
-     dispatch(getVideoThunk({id: videoId, slug}))
+    if(videoId && slug)     dispatch(getVideoThunk({id: videoId, slug}))
   }, [dispatch, videoId, slug])
+
+  useEffect(() => {
+    if(!videos.length)      dispatch(getVideosThunk({page: 1, limit: 3}));
+  })
 
   if (loading && !selectedVideo) {
     return <div className="text-white">Loading video...</div>;
