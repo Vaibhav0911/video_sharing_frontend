@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import {ProtectedRoute, PublicOnlyRoute} from "../components/shared"
 import {AuthLayout, DashboardLayout, MainLayout, WatchLayout} from "../layouts";
-import {Home, Login, WatchVideo, Signup} from "../pages"
+import {Home, Login, WatchVideo, Signup, Profile, MyChannel, WatchHistory} from "../pages"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,14 +17,16 @@ const router = createBrowserRouter(
 
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/channel/:username" element={<Profile />} />
       </Route>
 
       <Route element={<WatchLayout />}>
         <Route path="/watch-video/:videoId/:slug" element={<WatchVideo />} />
       </Route>
 
-      <Route element={<ProtectedRoute> <DashboardLayout /> </ProtectedRoute>}>
-        <Route path="" />
+      <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+        <Route path="/channel/me" element={<MyChannel />} />
+        <Route path="/history" element={<WatchHistory />} />
       </Route>
     </Route>
   )

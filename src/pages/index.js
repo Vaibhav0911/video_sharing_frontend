@@ -2,3 +2,6 @@ export { default as Home } from "./Home";
 export { default as Login } from "./Login";
 export { default as WatchVideo } from "./WatchVideo";
 export { default as Signup } from "./Signup";
+export { default as MyChannel} from "./MyChannel";
+export { default as Profile} from "./Profile";
+export { default as WatchHistory} from "./WatchHistory";

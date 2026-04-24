@@ -16,17 +16,23 @@ function VideoInfo({
 }) {
   return (
     <div className={cn("flex gap-3", className)}>
+      
+      {/* Avatar → Channel */}
       {!hideAvatar && (
-        <Avatar
-          src={ownerAvatar}
-          alt={ownerName}
-          name={ownerName}
-          size="md"
-          className="shrink-0"
-        />
+        <Link to={`/channel/${ownerName}`}>
+          <Avatar
+            src={ownerAvatar}
+            alt={ownerName}
+            name={ownerName}
+            size="md"
+            className="shrink-0 cursor-pointer hover:opacity-80 transition"
+          />
+        </Link>
       )}
 
       <div className="min-w-0 flex-1">
+        
+        {/* Title → Video */}
         <Link
           to={`/watch-video/${videoId}/${slug || ""}`}
           className="line-clamp-2 text-sm font-semibold text-white hover:text-neutral-200"
@@ -34,7 +40,13 @@ function VideoInfo({
           {title}
         </Link>
 
-        <p className="mt-1 truncate text-sm text-neutral-400">{ownerName}</p>
+        {/* Owner Name → Channel */}
+        <Link
+          to={`/channel/${ownerName}`}
+          className="mt-1 block truncate text-sm text-neutral-400 hover:text-white"
+        >
+          {ownerName}
+        </Link>
 
         <p className="mt-1 text-xs text-neutral-500">
           {views} views • {createdAt}
