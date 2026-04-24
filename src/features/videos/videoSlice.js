@@ -56,14 +56,14 @@ const videoSlice = createSlice({
       })
       .addCase(getVideosThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.videos = action.payload.data.videos;
+        state.videos = action.payload?.videos;
         state.pagination = {
-          page: action.payload.data.page,
-          limit: action.payload.data.limit,
-          totalVideos: action.payload.data.totalVideos,
-          totalPages: action.payload.data.totalPages,
-          hasNextPage: action.payload.data.hasNextPage,
-          hasPreviousPage: action.payload.data.hasPreviousPage,
+          page: action.payload.page,
+          limit: action.payload.limit,
+          totalVideos: action.payload.totalVideos,
+          totalPages: action.payload.totalPages,
+          hasNextPage: action.payload.hasNextPage,
+          hasPreviousPage: action.payload.hasPreviousPage,
         };
       })
       .addCase(getVideosThunk.rejected, (state, action) => {
@@ -78,7 +78,7 @@ const videoSlice = createSlice({
       })
       .addCase(getVideoThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.selectedVideo = action.payload.data;
+        state.selectedVideo = action.payload;
       })
       .addCase(getVideoThunk.rejected, (state, action) => {
         state.loading = false;

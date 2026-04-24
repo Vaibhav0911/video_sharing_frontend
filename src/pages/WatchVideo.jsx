@@ -23,8 +23,8 @@ function WatchVideo() {
   }, [dispatch, videoId, slug])
 
   useEffect(() => {
-    if(!videos.length)      dispatch(getVideosThunk({page: 1, limit: 3}));
-  })
+    if(videoId && slug)      dispatch(getVideosThunk({page: 1, limit: 3}));
+  }, [dispatch, videos, videoId, slug])
 
   if (loading && !selectedVideo) {
     return <div className="text-white">Loading video...</div>;

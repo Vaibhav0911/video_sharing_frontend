@@ -41,8 +41,8 @@ const getVideo = async ({ id, slug }) => {
   }
 
   try {
-    const { data } = await axiosInstance.get(`/videos/${id}/${slug}`);
-    return data;
+    const res = await axiosInstance.get(`/videos/${id}/${slug}`);
+    return res.data?.data;
   } catch (error) {
     throw handleApiError(error);
   }
@@ -50,10 +50,10 @@ const getVideo = async ({ id, slug }) => {
 
 const getVideos = async ({ page = 1, limit = 10 } = {}) => {
   try {
-    const { data } = await axiosInstance.get("/videos", {
+    const res = await axiosInstance.get("/videos", {
       params: { page, limit },
     });
-    return data;
+    return res.data?.data;
   } catch (error) {
     throw handleApiError(error);
   }
