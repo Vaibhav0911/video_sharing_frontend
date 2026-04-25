@@ -1,15 +1,21 @@
 import React from "react";
 import { Avatar, Button } from "../../../components/ui";
+import { Link } from "react-router-dom";
 
 function ChannelInfo({
   channelName,
   channelAvatar,
-  subscribers,
+  subscribers = 0,
+  isSubscribed = false,
+  isOwner = false,
   onSubscribe,
+  loading = false,
 }) {
+  if (!channelName) return null;
+
   return (
     <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-900 p-4 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex items-center gap-3">
+      <Link to={`/channel/${channelName}`} className="flex items-center gap-3">
         <Avatar
           src={channelAvatar}
           alt={channelName}
@@ -18,12 +24,26 @@ function ChannelInfo({
         />
 
         <div>
-          <h3 className="text-sm font-semibold text-white">{channelName}</h3>
-          <p className="text-sm text-neutral-400">{subscribers} subscribers</p>
+          <h3 className="text-sm font-semibold text-white">@{channelName}</h3>
+          <p className="text-sm text-neutral-400">
+            {subscribers || 0} subscribers
+          </p>
         </div>
-      </div>
+      </Link>
 
-      <Button onClick={onSubscribe}>Subscribe</Button>
+      {!isOwner && (
+        <Button
+          onClick={onSubscribe}
+          disabled={loading}
+          variant={isSubscribed ? "secondary" : "primary"}
+        >
+          {loading
+            ? "Please wait..."
+            : isSubscribed
+              ? "Subscribed"
+              : "Subscribe"}
+        </Button>
+      )}
     </div>
   );
 }

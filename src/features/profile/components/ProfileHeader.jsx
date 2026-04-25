@@ -1,6 +1,7 @@
 import React from "react";
 import ImageUploadButton from "./ImageUploadButton";
 import ProfileStats from "./ProfileStats";
+import { SubscribeButton } from "../../subscriptions/components";
 
 function ProfileHeader({
   profile,
@@ -66,12 +67,22 @@ function ProfileHeader({
             </p>
           </div>
 
-          <div className="w-full md:max-w-md">
-            <ProfileStats
-              subscribers={profile.subscribersCount}
-              subscribedTo={profile.channelsSubscribedToCount}
-              videos={profile.videosCount}
+          <div className="flex flex-col items-start gap-4 md:items-end">
+            {/* SUBSCRIBE BUTTON */}
+            <SubscribeButton
+              username={profile.username}
+              isSubscribed={profile.isSubscribed}
+              isOwner={isOwner}
             />
+
+            {/* STATS */}
+            <div className="w-full md:max-w-md">
+              <ProfileStats
+                subscribers={profile.subscriberCount}
+                subscribedTo={profile.subscribedChannelsCount}
+                videos={profile.videosCount}
+              />
+            </div>
           </div>
         </div>
       </div>

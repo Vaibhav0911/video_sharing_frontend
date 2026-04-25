@@ -5,3 +5,4 @@ export { default as Signup } from "./Signup";
 export { default as MyChannel} from "./MyChannel";
 export { default as Profile} from "./Profile";
 export { default as WatchHistory} from "./WatchHistory";
+export { default as Subscriptions} from "./Subscriptions";

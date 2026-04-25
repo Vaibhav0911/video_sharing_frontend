@@ -9,6 +9,7 @@ import {
 } from "../features/videos/components";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideosThunk, getVideoThunk } from "../features/videos/videoThunk";
+import { toggleSubscribeChannelThunk } from "../features/subscriptions/subscriptionThunk";
 
 function WatchVideo() {
   
@@ -18,6 +19,9 @@ function WatchVideo() {
     (state) => state.videos
   );
 
+  const { user } = useSelector((state) => state.auth);
+  const { toggleLoading } = useSelector((state) => state.subscriptions);
+
   useEffect(() => {
     if(videoId && slug)     dispatch(getVideoThunk({id: videoId, slug}))
   }, [dispatch, videoId, slug])
@@ -25,6 +29,18 @@ function WatchVideo() {
   useEffect(() => {
     if(videoId && slug)      dispatch(getVideosThunk({page: 1, limit: 3}));
   }, [dispatch, videos, videoId, slug])
+
+  const handleSubscribe = async () => {
+    const username = selectedVideo.owner?.username;
+
+    if (!username) return;
+
+    const result = await dispatch(toggleSubscribeChannelThunk(username));
+
+    if (toggleSubscribeChannelThunk.fulfilled.match(result)) {
+      dispatch(getVideoThunk({ id: videoId, slug }));
+    }
+  };
 
   if (loading && !selectedVideo) {
     return <div className="text-white">Loading video...</div>;
@@ -57,7 +73,11 @@ function WatchVideo() {
         <ChannelInfo
           channelName={selectedVideo.owner?.username}
           channelAvatar={selectedVideo.owner?.profileimage}
-          subscribers="1.2K"
+          subscribers={selectedVideo.owner?.subscribersCount || 0}
+          isSubscribed={selectedVideo.owner?.isSubscribed}
+          isOwner={selectedVideo.owner?._id === user?._id}
+          loading={toggleLoading}
+          onSubscribe={handleSubscribe}
         />
       </div>
 

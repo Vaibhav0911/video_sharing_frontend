@@ -18,7 +18,7 @@ function WatchHistoryList({ videos = [] }) {
       {videos.map((video) => (
         <Link
           key={video._id}
-          to={`/watch/${video.videoId}/${video.slug}`}
+          to={`/watch-video/${video._id}/${video.slug}`}
           className="flex gap-4 rounded-xl bg-neutral-900 p-3 hover:bg-neutral-800"
         >
           <img
