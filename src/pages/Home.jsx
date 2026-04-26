@@ -15,7 +15,7 @@ function Home() {
   return (
      <section className="space-y-6">
       <h1 className="text-2xl font-bold text-white">Home</h1>
-      <VideoGrid videos={videos} loading={false} error={null} />
+      <VideoGrid videos={videos} loading={loading.fetchAll} error={error} />
     </section>
   );
 }

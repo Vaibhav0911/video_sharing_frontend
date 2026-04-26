@@ -42,7 +42,7 @@ function Navbar({
         <div className="flex items-center gap-3">
           {isAuthenticated ? (
             <>
-              <Link to="/upload">
+              <Link to="/upload-video">
                 <Button variant="outline" size="sm">
                   Upload
                 </Button>

@@ -25,10 +25,10 @@ function DashboardLayout() {
         />
 
         <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
-          <PageHeader
+          {/* <PageHeader
             title="Dashboard"
             description="Manage your content, videos, and channel settings."
-          />
+          /> */}
           <Outlet />
         </main>
       </div>

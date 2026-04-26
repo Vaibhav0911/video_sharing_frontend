@@ -6,3 +6,5 @@ export { default as MyChannel} from "./MyChannel";
 export { default as Profile} from "./Profile";
 export { default as WatchHistory} from "./WatchHistory";
 export { default as Subscriptions} from "./Subscriptions";
+export { default as EditVideo } from "./EditVideo";
+export { default as UploadVideo } from "./UploadVideo";

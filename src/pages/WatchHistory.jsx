@@ -15,7 +15,7 @@ function WatchHistory() {
     dispatch(getWatchHistoryThunk());
   }, [dispatch]);
 
-  if (loading) {
+  if (loading.fetchAll) {
     return <div className="p-6 text-white">Loading watch history...</div>;
   }
 

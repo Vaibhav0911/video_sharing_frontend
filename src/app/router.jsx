@@ -3,14 +3,37 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import {ProtectedRoute, PublicOnlyRoute} from "../components/shared"
-import {AuthLayout, DashboardLayout, MainLayout, WatchLayout} from "../layouts";
-import {Home, Login, WatchVideo, Signup, Profile, MyChannel, WatchHistory, Subscriptions} from "../pages"
+import { ProtectedRoute, PublicOnlyRoute } from "../components/shared";
+import {
+  AuthLayout,
+  DashboardLayout,
+  MainLayout,
+  WatchLayout,
+} from "../layouts";
+import {
+  Home,
+  Login,
+  WatchVideo,
+  Signup,
+  Profile,
+  MyChannel,
+  WatchHistory,
+  Subscriptions,
+  EditVideo,
+  UploadVideo
+} from "../pages";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route element={<PublicOnlyRoute> <AuthLayout /> </PublicOnlyRoute>}>
+      <Route
+        element={
+          <PublicOnlyRoute>
+            {" "}
+            <AuthLayout />{" "}
+          </PublicOnlyRoute>
+        }
+      >
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Route>
@@ -24,10 +47,19 @@ const router = createBrowserRouter(
         <Route path="/watch-video/:videoId/:slug" element={<WatchVideo />} />
       </Route>
 
-      <Route element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+      <Route
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      >
         <Route path="/channel/me" element={<MyChannel />} />
         <Route path="/history" element={<WatchHistory />} />
         <Route path="/subscriptions" element={<Subscriptions />} />
+
+        <Route path="/upload-video" element={<UploadVideo />} />
+        <Route path="/videos/:videoId/:slug/edit" element={<EditVideo />} />
       </Route>
     </Route>
   )

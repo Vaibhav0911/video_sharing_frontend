@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { Button } from "../components/ui";
+import { VideoDeleteModal } from "../features/videos/components";
 import {
   VideoPlayer,
   VideoMeta,
@@ -12,23 +14,25 @@ import { getVideosThunk, getVideoThunk } from "../features/videos/videoThunk";
 import { toggleSubscribeChannelThunk } from "../features/subscriptions/subscriptionThunk";
 
 function WatchVideo() {
-  
   const dispatch = useDispatch();
   const { videoId, slug } = useParams();
   const { selectedVideo, videos, loading, error } = useSelector(
     (state) => state.videos
   );
-
+  
   const { user } = useSelector((state) => state.auth);
   const { toggleLoading } = useSelector((state) => state.subscriptions);
 
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const isOwner = selectedVideo?.owner?._id === user?._id;
+  
   useEffect(() => {
-    if(videoId && slug)     dispatch(getVideoThunk({id: videoId, slug}))
-  }, [dispatch, videoId, slug])
+    if (videoId && slug) dispatch(getVideoThunk({ id: videoId, slug }));
+  }, [dispatch, videoId, slug]);
 
   useEffect(() => {
-    if(videoId && slug)      dispatch(getVideosThunk({page: 1, limit: 3}));
-  }, [dispatch, videos, videoId, slug])
+    if (videoId && slug) dispatch(getVideosThunk({ page: 1, limit: 5 }));
+  }, [dispatch, videoId, slug]);
 
   const handleSubscribe = async () => {
     const username = selectedVideo.owner?.username;
@@ -42,7 +46,7 @@ function WatchVideo() {
     }
   };
 
-  if (loading && !selectedVideo) {
+  if (loading.fetchOne && !selectedVideo) {
     return <div className="text-white">Loading video...</div>;
   }
 
@@ -70,6 +74,26 @@ function WatchVideo() {
         />
         <VideoActions />
 
+        {isOwner && (
+          <div className="flex items-center gap-3">
+            <Link
+              to={`/videos/${selectedVideo._id}/${selectedVideo.slug}/edit`}
+            >
+              <Button variant="outline">Edit Video</Button>
+            </Link>
+
+            <Button variant="danger" onClick={() => setDeleteOpen(true)}>
+              Delete Video
+            </Button>
+          </div>
+        )}
+
+        <VideoDeleteModal
+          isOpen={deleteOpen}
+          onClose={() => setDeleteOpen(false)}
+          videoId={selectedVideo._id}
+        />
+
         <ChannelInfo
           channelName={selectedVideo.owner?.username}
           channelAvatar={selectedVideo.owner?.profileimage}
@@ -84,7 +108,7 @@ function WatchVideo() {
       <aside>
         <RelatedVideos
           videos={videos.filter((video) => video._id !== selectedVideo._id)}
-          loading={false}
+          loading={loading.fetchAll}
         />
       </aside>
     </div>

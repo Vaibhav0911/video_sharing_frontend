@@ -8,3 +8,7 @@ export { default as VideoInfo } from "./VideoInfo";
 export { default as ChannelInfo } from "./ChannelInfo";
 export { default as RelatedVideos } from "./RelatedVideos";
 export { default as VideoCardSkeleton } from "./VideoCardSkeleton";
+export { default as VideoForm } from "./VideoForm";
+export { default as VideoUploadForm } from "./VideoUploadForm";
+export { default as VideoUpdateForm } from "./VideoUpdateForm";
+export { default as VideoDeleteModal} from "./VideoDeleteModal";
