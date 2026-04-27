@@ -20,7 +20,8 @@ import {
   WatchHistory,
   Subscriptions,
   EditVideo,
-  UploadVideo
+  UploadVideo,
+  LikedVideos
 } from "../pages";
 
 const router = createBrowserRouter(
@@ -60,6 +61,7 @@ const router = createBrowserRouter(
 
         <Route path="/upload-video" element={<UploadVideo />} />
         <Route path="/videos/:videoId/:slug/edit" element={<EditVideo />} />
+        <Route path="/liked-videos" element={<LikedVideos />} />
       </Route>
     </Route>
   )

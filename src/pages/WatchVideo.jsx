@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getVideosThunk, getVideoThunk } from "../features/videos/videoThunk";
 import { toggleSubscribeChannelThunk } from "../features/subscriptions/subscriptionThunk";
+import { getLikesThunk } from "../features/likes/likeThunk";
 
 function WatchVideo() {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ function WatchVideo() {
   const { selectedVideo, videos, loading, error } = useSelector(
     (state) => state.videos
   );
-  
+
   const { user } = useSelector((state) => state.auth);
   const { toggleLoading } = useSelector((state) => state.subscriptions);
 
   const [deleteOpen, setDeleteOpen] = useState(false);
   const isOwner = selectedVideo?.owner?._id === user?._id;
-  
+
   useEffect(() => {
     if (videoId && slug) dispatch(getVideoThunk({ id: videoId, slug }));
   }, [dispatch, videoId, slug]);
@@ -33,6 +34,17 @@ function WatchVideo() {
   useEffect(() => {
     if (videoId && slug) dispatch(getVideosThunk({ page: 1, limit: 5 }));
   }, [dispatch, videoId, slug]);
+
+  useEffect(() => {
+    if (selectedVideo?._id) {
+      dispatch(
+        getLikesThunk({
+          targetType: "videos",
+          targetId: selectedVideo._id,
+        })
+      );
+    }
+  }, [dispatch, selectedVideo?._id]);
 
   const handleSubscribe = async () => {
     const username = selectedVideo.owner?.username;
@@ -72,7 +84,7 @@ function WatchVideo() {
           createdAt={selectedVideo.createdAt || "Recently uploaded"}
           description={selectedVideo.description}
         />
-        <VideoActions />
+        <VideoActions video={selectedVideo} />
 
         {isOwner && (
           <div className="flex items-center gap-3">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { timeAgo } from "../../../utils/timeAgo";
 
 function VideoMeta({
   title,
@@ -14,7 +15,7 @@ function VideoMeta({
 
       <div className="rounded-2xl bg-neutral-900 p-4">
         <p className="text-sm font-medium text-neutral-200">
-          {views} views • {createdAt}
+          {views} views • {timeAgo(createdAt)}
         </p>
 
         {description && (

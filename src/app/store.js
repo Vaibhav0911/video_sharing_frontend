@@ -3,6 +3,7 @@ import authReducer from "../features/auth/authSlice.js"
 import videoReducer from "../features/videos/videoSlice.js"
 import profileReducer from "../features/profile/profileSlice.js"
 import subscriptionReducer from "../features/subscriptions/subscriptionSlice.js"
+import likeReducer from "../features/likes/likeSlice.js"
 
 const store = configureStore({
    reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
       videos: videoReducer,
       profile: profileReducer,
       subscriptions: subscriptionReducer,
+      likes: likeReducer,
    }
 });
 

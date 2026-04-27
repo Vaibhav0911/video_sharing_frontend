@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "../../../utils/cn";
+import { formatDuration } from "../../../utils/formatDuration";
 
 function VideoThumbnail({
   src,
@@ -31,7 +32,7 @@ function VideoThumbnail({
 
       {duration && (
         <span className="absolute bottom-2 right-2 rounded bg-black/80 px-2 py-0.5 text-xs font-medium text-white">
-          {duration}
+          {formatDuration(duration)}
         </span>
       )}
     </div>

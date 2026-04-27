@@ -1,25 +1,22 @@
 import React from "react";
 import { Button } from "../../../components/ui";
+import { LikeButton } from "../../likes/components"
 
-function VideoActions({
-  onLike,
-  onShare,
-  onSave,
-  liked = false,
-}) {
+function VideoActions({video}) {
   return (
     <div className="flex flex-wrap gap-3">
-      <Button variant={liked ? "secondary" : "outline"} onClick={onLike}>
-        {liked ? "Liked" : "Like"}
-      </Button>
+      
+      {/* LIKE BUTTON */}
+      <LikeButton
+        targetType="videos"
+        targetId={video._id}
+      />
 
-      <Button variant="outline" onClick={onShare}>
-        Share
-      </Button>
+      {/* SHARE */}
+      <Button variant="outline">Share</Button>
 
-      <Button variant="outline" onClick={onSave}>
-        Save
-      </Button>
+      {/* SAVE */}
+      <Button variant="outline">Save</Button>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Avatar } from "../../../components/ui";
 import { cn } from "../../../utils/cn";
+import { timeAgo } from "../../../utils/timeAgo";
 
 function VideoInfo({
   title,
@@ -49,7 +50,7 @@ function VideoInfo({
         </Link>
 
         <p className="mt-1 text-xs text-neutral-500">
-          {views} views • {createdAt}
+          {views} views • {timeAgo(createdAt)}
         </p>
       </div>
     </div>
