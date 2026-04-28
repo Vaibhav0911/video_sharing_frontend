@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getVideosThunk, getVideoThunk } from "../features/videos/videoThunk";
 import { toggleSubscribeChannelThunk } from "../features/subscriptions/subscriptionThunk";
 import { getLikesThunk } from "../features/likes/likeThunk";
+import { CommentSection } from "../features/comments/components";
 
 function WatchVideo() {
   const dispatch = useDispatch();
@@ -115,6 +116,8 @@ function WatchVideo() {
           loading={toggleLoading}
           onSubscribe={handleSubscribe}
         />
+
+        <CommentSection videoId={selectedVideo._id} />
       </div>
 
       <aside>

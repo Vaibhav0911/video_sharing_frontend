@@ -95,7 +95,7 @@ const likeSlice = createSlice({
 
       .addCase(getLikedVideosThunk.fulfilled, (state, action) => {
         state.likedVideosLoading = false;
-        console.log(action.payload);
+        // console.log(action.payload);
         state.likedVideos = action.payload?.data?.videos || [];
       })
 
