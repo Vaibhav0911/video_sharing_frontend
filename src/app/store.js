@@ -5,6 +5,7 @@ import profileReducer from "../features/profile/profileSlice.js"
 import subscriptionReducer from "../features/subscriptions/subscriptionSlice.js"
 import likeReducer from "../features/likes/likeSlice.js"
 import commentReducer from "../features/comments/commentSlice.js"
+import playlistReducer from "../features/playlists/playlistSlice.js";
 
 const store = configureStore({
    reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
       subscriptions: subscriptionReducer,
       likes: likeReducer,
       comments: commentReducer,
+      playlists: playlistReducer,
    }
 });
 
