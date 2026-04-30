@@ -14,7 +14,7 @@ function ChannelInfo({
   if (!channelName) return null;
 
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-neutral-900 p-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-4 sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:bg-neutral-900">
       <Link to={`/channel/${channelName}`} className="flex items-center gap-3">
         <Avatar
           src={channelAvatar}
@@ -24,8 +24,8 @@ function ChannelInfo({
         />
 
         <div>
-          <h3 className="text-sm font-semibold text-white">@{channelName}</h3>
-          <p className="text-sm text-neutral-400">
+          <h3 className="text-sm font-semibold text-gray-900 dark:text-white">@{channelName}</h3>
+          <p className="text-sm text-gray-600 dark:text-neutral-400">
             {subscribers || 0} subscribers
           </p>
         </div>

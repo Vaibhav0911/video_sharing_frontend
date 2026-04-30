@@ -30,7 +30,7 @@ function Avatar({
   ) : (
     <div
       className={cn(
-        "flex items-center justify-center rounded-full bg-gray-200 font-semibold text-gray-700",
+        "flex items-center justify-center rounded-full bg-blue-100 font-semibold text-blue-700 dark:bg-blue-900 dark:text-blue-100",
         sizes[size],
         className
       )}

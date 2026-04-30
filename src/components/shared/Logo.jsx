@@ -8,7 +8,7 @@ function Logo({ className = "", textClassName = "" }) {
       <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-600 text-lg font-bold text-white shadow-sm">
         V
       </div>
-      <span className={cn("text-lg font-semibold tracking-tight text-gray-900", textClassName)}>
+      <span className={cn("text-lg font-semibold tracking-tight text-gray-900 dark:text-dark-text", textClassName)}>
         ViewTube
       </span>
     </Link>

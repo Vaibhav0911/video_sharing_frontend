@@ -16,7 +16,7 @@ function AuthGuard({ children }) {
 
   if (!authChecked && loading) {
     return (
-      <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="flex min-h-[60vh] items-center justify-center bg-gray-50 dark:bg-dark-bg">
         <Loader size="lg" />
       </div>
     );

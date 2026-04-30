@@ -11,7 +11,7 @@ function AuthSocialButtons({
       <Button
         type="button"
         variant="outline"
-        className="w-full border-white/10 bg-white/5 text-white hover:bg-white/10"
+        className="w-full border-gray-200 bg-gray-100 text-gray-900 hover:bg-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
         onClick={onGoogleClick}
       >
         Continue with Google
@@ -21,7 +21,7 @@ function AuthSocialButtons({
         <Button
           type="button"
           variant="outline"
-          className="w-full border-white/10 bg-white/5 text-white hover:bg-white/10"
+          className="w-full border-gray-200 bg-gray-100 text-gray-900 hover:bg-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
           onClick={onGithubClick}
         >
           Continue with GitHub

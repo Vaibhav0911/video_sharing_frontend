@@ -11,7 +11,7 @@ function Checkbox({
   return (
     <label
       className={cn(
-        "inline-flex items-center gap-2 text-sm text-gray-700",
+        "inline-flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300",
         disabled && "cursor-not-allowed opacity-60",
         className
       )}
@@ -21,7 +21,7 @@ function Checkbox({
         checked={checked}
         onChange={onChange}
         disabled={disabled}
-        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+        className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:ring-blue-400"
       />
       <span>{label}</span>
     </label>

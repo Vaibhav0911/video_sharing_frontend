@@ -30,8 +30,8 @@ function SubscribeButton({
       disabled={toggleLoading}
       className={`px-5 py-2 rounded-full text-sm font-semibold ${
         isSubscribed
-          ? "bg-neutral-800 text-white"
-          : "bg-white text-black"
+          ? "bg-neutral-800 text-white dark:bg-blue-600"
+          : "bg-white text-black dark:bg-white dark:text-black"
       }`}
     >
       {toggleLoading

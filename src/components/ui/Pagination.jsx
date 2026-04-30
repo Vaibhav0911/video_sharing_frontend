@@ -14,7 +14,7 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         Prev
       </Button>
 
-      <span className="text-sm text-gray-700">
+      <span className="text-sm text-gray-700 dark:text-gray-300">
         Page {currentPage} of {totalPages}
       </span>
 

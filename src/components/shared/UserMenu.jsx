@@ -58,7 +58,7 @@ function UserMenu() {
       <button
         type="button"
         onClick={handleToggle}
-        className="rounded-full focus:outline-none focus:ring-2 focus:ring-gray-300"
+        className="rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-dark-bg"
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-label="Open user menu"
@@ -71,12 +71,12 @@ function UserMenu() {
       </button>
 
       {isOpen ? (
-        <div className="absolute right-0 top-12 z-50 w-56 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
-          <div className="border-b border-gray-100 px-4 py-3">
-            <p className="truncate text-sm font-semibold text-gray-900">
+        <div className="absolute right-0 top-12 z-50 w-56 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg dark:border-gray-700 dark:bg-dark-surface">
+          <div className="border-b border-gray-100 px-4 py-3 dark:border-gray-700">
+            <p className="truncate text-sm font-semibold text-gray-900 dark:text-dark-text">
               {user?.fullname || "User"}
             </p>
-            <p className="truncate text-xs text-gray-500">
+            <p className="truncate text-xs text-gray-500 dark:text-gray-400">
               @{user?.username || "username"}
             </p>
           </div>
@@ -85,7 +85,7 @@ function UserMenu() {
             <Link
               to="/channel/me"
               onClick={handleClose}
-              className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
+              className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               My Channel
             </Link>
@@ -93,7 +93,7 @@ function UserMenu() {
             <Link
               to="/dashboard"
               onClick={handleClose}
-              className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
+              className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               Dashboard
             </Link>
@@ -101,7 +101,7 @@ function UserMenu() {
             <Link
               to="/history"
               onClick={handleClose}
-              className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50"
+              className="block px-4 py-2 text-sm text-gray-700 transition hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
             >
               History
             </Link>
@@ -110,7 +110,7 @@ function UserMenu() {
               type="button"
               onClick={handleLogout}
               disabled={loading}
-              className="block w-full px-4 py-2 text-left text-sm text-red-600 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+              className="block w-full px-4 py-2 text-left text-sm text-red-600 transition hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? "Logging out..." : "Logout"}
             </button>

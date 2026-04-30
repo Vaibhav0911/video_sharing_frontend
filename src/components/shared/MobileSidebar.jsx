@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { X } from "lucide-react";
 import { cn } from "../../utils/cn";
 
 const navItems = [
@@ -29,17 +30,18 @@ function MobileSidebar({ isOpen, onClose }) {
 
       <div
         className={cn(
-          "absolute left-0 top-0 h-full w-72 bg-white p-4 shadow-xl transition-transform duration-300",
+          "absolute left-0 top-0 h-full w-72 bg-white p-4 shadow-xl transition-transform duration-300 dark:bg-dark-surface",
           isOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Menu</h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+            aria-label="Close navigation menu"
           >
-            ✕
+            <X size={20} />
           </button>
         </div>
 
@@ -53,8 +55,8 @@ function MobileSidebar({ isOpen, onClose }) {
                 cn(
                   "block rounded-xl px-4 py-2.5 text-sm font-medium transition",
                   isActive
-                    ? "bg-gray-100 text-gray-900"
-                    : "text-gray-700 hover:bg-gray-50"
+                    ? "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-dark-text"
+                    : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
                 )
               }
             >

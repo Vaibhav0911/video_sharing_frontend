@@ -36,7 +36,7 @@ function VideoInfo({
         {/* Title → Video */}
         <Link
           to={`/watch-video/${videoId}/${slug || ""}`}
-          className="line-clamp-2 text-sm font-semibold text-white hover:text-neutral-200"
+          className="line-clamp-2 text-sm font-semibold text-gray-900 hover:text-gray-700 dark:text-white dark:hover:text-neutral-200"
         >
           {title}
         </Link>
@@ -44,7 +44,7 @@ function VideoInfo({
         {/* Owner Name → Channel */}
         <Link
           to={`/channel/${ownerName}`}
-          className="mt-1 block truncate text-sm text-neutral-400 hover:text-white"
+          className="mt-1 block truncate text-sm text-gray-500 hover:text-gray-700 dark:text-neutral-400 dark:hover:text-white"
         >
           {ownerName}
         </Link>

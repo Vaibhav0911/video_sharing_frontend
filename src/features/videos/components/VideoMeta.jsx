@@ -11,17 +11,17 @@ function VideoMeta({
 
   return (
     <section className="space-y-3">
-      <h1 className="text-xl font-bold text-white sm:text-2xl">{title}</h1>
+      <h1 className="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">{title}</h1>
 
-      <div className="rounded-2xl bg-neutral-900 p-4">
-        <p className="text-sm font-medium text-neutral-200">
+      <div className="rounded-2xl bg-white p-4 dark:bg-neutral-900">
+        <p className="text-sm font-medium text-gray-700 dark:text-neutral-200">
           {views} views • {timeAgo(createdAt)}
         </p>
 
         {description && (
           <div className="mt-3">
             <p
-              className={`text-sm leading-6 text-neutral-300 ${
+              className={`text-sm leading-6 text-gray-600 dark:text-neutral-300 ${
                 expanded ? "" : "line-clamp-3"
               }`}
             >
@@ -31,7 +31,7 @@ function VideoMeta({
             <button
               type="button"
               onClick={() => setExpanded((prev) => !prev)}
-              className="mt-2 text-sm font-medium text-white hover:text-neutral-300"
+              className="mt-2 text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
             >
               {expanded ? "Show less" : "Show more"}
             </button>

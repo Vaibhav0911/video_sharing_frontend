@@ -8,7 +8,7 @@ function PlaylistCard({ playlist }) {
   return (
     <Link to={`/playlists/${playlist._id}`}>
       <Card className="overflow-hidden transition hover:shadow-md">
-        <div className="relative aspect-video bg-gray-100">
+        <div className="relative aspect-video bg-gray-100 dark:bg-neutral-800">
           {firstVideo?.thumbnail ? (
             <img
               src={firstVideo.thumbnail}
@@ -17,18 +17,18 @@ function PlaylistCard({ playlist }) {
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
-              <ListVideo className="h-10 w-10 text-gray-400" />
+              <ListVideo className="h-10 w-10 text-gray-400 dark:text-neutral-400" />
             </div>
           )}
 
-          <div className="absolute bottom-2 right-2 rounded-lg bg-black/70 px-2 py-1 text-xs text-white">
+          <div className="absolute bottom-2 right-2 rounded-lg bg-black/70 px-2 py-1 text-xs text-white dark:bg-white/10">
             {playlist?.videos?.length || 0} videos
           </div>
         </div>
 
         <CardContent className="space-y-2">
           <div className="flex items-center gap-2">
-            <h3 className="line-clamp-1 font-semibold text-gray-900">
+            <h3 className="line-clamp-1 font-semibold text-gray-900 dark:text-white">
               {playlist.name}
             </h3>
 
@@ -40,7 +40,7 @@ function PlaylistCard({ playlist }) {
             )}
           </div>
 
-          <p className="line-clamp-2 text-sm text-gray-600">
+          <p className="line-clamp-2 text-sm text-gray-500 dark:text-neutral-400">
             {playlist.description || "No description"}
           </p>
         </CardContent>

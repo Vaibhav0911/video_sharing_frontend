@@ -16,12 +16,12 @@ function WatchHistory() {
   }, [dispatch]);
 
   if (loading.fetchAll) {
-    return <div className="p-6 text-white">Loading watch history...</div>;
+    return <div className="p-6 text-gray-900 dark:text-white">Loading watch history...</div>;
   }
 
   if (error) {
     return (
-      <div className="p-6 text-red-400">
+      <div className="p-6 text-red-600 dark:text-red-400">
         {error?.message || "Failed to load watch history"}
       </div>
     );
@@ -30,8 +30,8 @@ function WatchHistory() {
   return (
     <main className="space-y-6 p-4 md:p-6">
       <div>
-        <h1 className="text-2xl font-bold text-white">Watch History</h1>
-        <p className="mt-1 text-sm text-neutral-400">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Watch History</h1>
+        <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">
           Recently watched videos from your account.
         </p>
       </div>

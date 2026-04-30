@@ -4,9 +4,9 @@ import { Logo } from "../components/shared";
 
 function AuthLayout() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-neutral-950 px-4 py-10 text-white">
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur">
-        <div className="mb-6 flex justify-center">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-10 text-gray-900 dark:from-dark-bg dark:to-dark-surface dark:text-dark-text">
+      <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-dark-surface">
+        <div className="mb-8 flex justify-center">
           <Logo />
         </div>
 

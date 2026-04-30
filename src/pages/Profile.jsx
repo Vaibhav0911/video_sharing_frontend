@@ -38,12 +38,12 @@ function Profile() {
   };
 
   if (loading) {
-    return <div className="p-6 text-white">Loading profile...</div>;
+    return <div className="p-6 text-gray-900 dark:text-white">Loading profile...</div>;
   }
 
   if (error) {
     return (
-      <div className="p-6 text-red-400">
+      <div className="p-6 text-red-600 dark:text-red-400">
         {error?.message || "Failed to load profile"}
       </div>
     );
@@ -65,12 +65,12 @@ function Profile() {
       {activeTab === "videos" && <ProfileVideoGrid videos={userVideos} />}
 
       {activeTab === "about" && (
-        <section className="rounded-2xl bg-neutral-900 p-5">
-          <h2 className="text-lg font-semibold text-white">About</h2>
-          <p className="mt-2 text-sm text-neutral-400">
+        <section className="rounded-2xl bg-white p-5 dark:bg-neutral-900">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">About</h2>
+          <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
             Username: @{channelProfile?.username}
           </p>
-          <p className="mt-1 text-sm text-neutral-400">
+          <p className="mt-1 text-sm text-gray-600 dark:text-neutral-400">
             Email: {channelProfile?.email}
           </p>
         </section>

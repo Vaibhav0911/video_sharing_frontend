@@ -11,7 +11,7 @@ function DashboardLayout() {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-dark-bg dark:text-dark-text">
       <Navbar onMenuClick={() => setIsMobileSidebarOpen(true)} />
 
       <div className="flex">

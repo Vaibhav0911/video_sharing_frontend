@@ -23,7 +23,7 @@ function PasswordInput({
         <button
           type="button"
           onClick={() => setShowPassword((prev) => !prev)}
-          className="absolute right-3 top-[38px] text-sm text-gray-400 hover:text-white"
+          className="absolute right-3 top-[38px] text-sm text-gray-400 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
         >
           {showPassword ? "Hide" : "Show"}
         </button>

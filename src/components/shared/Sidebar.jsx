@@ -15,7 +15,7 @@ function Sidebar({ className = "" }) {
   return (
     <aside
       className={cn(
-        "hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-r border-gray-200 bg-white p-4 lg:block",
+        "hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-r border-gray-200 bg-white p-4 lg:block dark:border-gray-700 dark:bg-dark-surface",
         className
       )}
     >
@@ -28,8 +28,8 @@ function Sidebar({ className = "" }) {
               cn(
                 "block rounded-xl px-4 py-2.5 text-sm font-medium transition",
                 isActive
-                  ? "bg-gray-100 text-gray-900"
-                  : "text-gray-700 hover:bg-gray-50"
+                  ? "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-dark-text"
+                  : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700"
               )
             }
           >

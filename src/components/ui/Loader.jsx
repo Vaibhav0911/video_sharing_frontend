@@ -11,7 +11,7 @@ function Loader({ size = "md", className = "" }) {
   return (
     <div
       className={cn(
-        "animate-spin rounded-full border-gray-300 border-t-blue-600",
+        "animate-spin rounded-full border-gray-300 border-t-blue-600 dark:border-gray-600 dark:border-t-blue-400",
         sizes[size],
         className
       )}

@@ -14,8 +14,8 @@ function ProfileHeader({
   if (!profile) return null;
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-950">
-      <div className="relative h-48 w-full bg-neutral-800 md:h-64">
+    <section className="overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-neutral-800 dark:bg-neutral-950">
+      <div className="relative h-48 w-full bg-gray-100 md:h-64 dark:bg-neutral-800">
         {profile.coverimage && (
           <img
             src={profile.coverimage}
@@ -41,7 +41,7 @@ function ProfileHeader({
             <img
               src={profile.profileimage}
               alt={profile.username}
-              className="h-28 w-28 rounded-full border-4 border-neutral-950 object-cover"
+              className="h-28 w-28 rounded-full border-4 border-white object-cover dark:border-neutral-950"
             />
 
             {isOwner && (
@@ -58,11 +58,11 @@ function ProfileHeader({
 
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-white">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               {profile.fullname || profile.username}
             </h1>
-            <p className="text-sm text-neutral-400">@{profile.username}</p>
-            <p className="mt-2 max-w-2xl text-sm text-neutral-300">
+            <p className="text-sm text-gray-600 dark:text-neutral-400">@{profile.username}</p>
+            <p className="mt-2 max-w-2xl text-sm text-gray-700 dark:text-neutral-300">
               {profile.email}
             </p>
           </div>

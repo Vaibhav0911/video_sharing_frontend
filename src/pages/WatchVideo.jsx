@@ -60,15 +60,15 @@ function WatchVideo() {
   };
 
   if (loading.fetchOne && !selectedVideo) {
-    return <div className="text-white">Loading video...</div>;
+    return <div className="text-gray-900 dark:text-white">Loading video...</div>;
   }
 
   if (error) {
-    return <div className="text-red-400">{error}</div>;
+    return <div className="text-red-600 dark:text-red-400">{error}</div>;
   }
 
   if (!selectedVideo) {
-    return <div className="text-white">Video not found</div>;
+    return <div className="text-gray-900 dark:text-white">Video not found</div>;
   }
 
   return (

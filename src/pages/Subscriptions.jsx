@@ -26,7 +26,7 @@ function SubscriptionsPage() {
 
   if (channelsLoading || videosLoading) {
     return (
-      <main className="p-6 text-white">
+      <main className="p-6 text-gray-900 dark:text-white">
         Loading subscriptions...
       </main>
     );
@@ -34,7 +34,7 @@ function SubscriptionsPage() {
 
   if (error) {
     return (
-      <main className="p-6 text-red-400">
+      <main className="p-6 text-red-600 dark:text-red-400">
         {error?.message || "Failed to load subscriptions"}
       </main>
     );
@@ -50,10 +50,10 @@ function SubscriptionsPage() {
 
   return (
     <main className="grid gap-6 p-4 md:grid-cols-[320px_1fr] md:p-6">
-      <aside className="rounded-2xl border border-neutral-800 bg-neutral-950 p-4">
+      <aside className="rounded-2xl border border-gray-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-950">
         <div className="mb-4">
-          <h1 className="text-xl font-bold text-white">Subscriptions</h1>
-          <p className="text-sm text-neutral-400">
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">Subscriptions</h1>
+          <p className="text-sm text-gray-600 dark:text-neutral-400">
             Channels you subscribed to
           </p>
         </div>
@@ -63,10 +63,10 @@ function SubscriptionsPage() {
 
       <section className="space-y-5">
         <div>
-          <h2 className="text-xl font-bold text-white">
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
             Latest videos
           </h2>
-          <p className="text-sm text-neutral-400">
+          <p className="text-sm text-gray-600 dark:text-neutral-400">
             Videos from all subscribed channels
           </p>
         </div>
@@ -74,11 +74,11 @@ function SubscriptionsPage() {
         {subscribedVideos.length ? (
           <SubscribedVideoGrid videos={subscribedVideos} />
         ) : (
-          <div className="rounded-2xl border border-dashed border-neutral-700 p-10 text-center">
-            <h3 className="text-lg font-semibold text-white">
+          <div className="rounded-2xl border border-dashed border-gray-200 bg-white p-10 text-center dark:border-neutral-700 dark:bg-neutral-950">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               No videos found
             </h3>
-            <p className="mt-2 text-sm text-neutral-400">
+            <p className="mt-2 text-sm text-gray-600 dark:text-neutral-400">
               Your subscribed channels have not uploaded videos yet.
             </p>
           </div>
