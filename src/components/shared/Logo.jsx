@@ -9,7 +9,7 @@ function Logo({ className = "", textClassName = "" }) {
         V
       </div>
       <span className={cn("text-lg font-semibold tracking-tight text-gray-900 dark:text-dark-text", textClassName)}>
-        ViewTube
+        VideoTube
       </span>
     </Link>
   );

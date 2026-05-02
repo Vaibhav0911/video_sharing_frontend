@@ -5,7 +5,7 @@ import { Edit, Trash2 } from "lucide-react";
 
 import { Button, EmptyState, Loader } from "../components/ui";
 import { VideoCard } from "../features/videos/components";
-import { CreatePlaylistModal } from "../features/playlists/components";
+import { CreatePlaylistModal, DeletePlaylistModel } from "../features/playlists/components";
 
 import {
   deletePlaylistThunk,
@@ -19,6 +19,7 @@ function PlaylistDetails() {
   const navigate = useNavigate();
 
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const { currentPlaylist, loading, deleteLoading, removeVideoLoading } =
     useSelector((state) => state.playlists);
@@ -30,12 +31,6 @@ function PlaylistDetails() {
   }, [dispatch, playlistId]);
 
   const handleDeletePlaylist = async () => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this playlist?"
-    );
-
-    if (!confirmDelete) return;
-
     await dispatch(deletePlaylistThunk(playlistId)).unwrap();
     navigate("/playlists");
   };
@@ -67,7 +62,7 @@ function PlaylistDetails() {
       </div>
     );
   }
-  
+
   return (
     <section className="space-y-6 p-4 md:p-6">
       <div className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
@@ -98,7 +93,7 @@ function PlaylistDetails() {
             variant="danger"
             loading={deleteLoading}
             leftIcon={<Trash2 className="h-4 w-4" />}
-            onClick={handleDeletePlaylist}
+            onClick={() => setOpenDeleteModal(true) }
           >
             Delete
           </Button>
@@ -135,6 +130,14 @@ function PlaylistDetails() {
         onClose={() => setOpenEditModal(false)}
         mode="edit"
         playlist={currentPlaylist}
+      />
+
+      <DeletePlaylistModel
+        isOpen={openDeleteModal}
+        onClose={() => setOpenDeleteModal(false)}
+        onConfirm={handleDeletePlaylist}
+        loading={deleteLoading}
+        playlistName={currentPlaylist?.name}
       />
     </section>
   );
