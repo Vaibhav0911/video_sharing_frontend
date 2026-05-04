@@ -23,7 +23,8 @@ import {
   UploadVideo,
   LikedVideos,
   Playlists,
-  PlaylistDetails 
+  PlaylistDetails,
+  SearchResults 
 } from "../pages";
 
 const router = createBrowserRouter(
@@ -44,6 +45,7 @@ const router = createBrowserRouter(
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/channel/:username" element={<Profile />} />
+        <Route path="/search" element={<SearchResults />} />
       </Route>
 
       <Route element={<WatchLayout />}>

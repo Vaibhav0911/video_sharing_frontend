@@ -13,6 +13,7 @@ function Navbar({
   searchValue = "",
   onSearchChange = () => {},
   onSearchSubmit = (e) => e.preventDefault(),
+  onSearchClear = () => {},
   onMenuClick = () => {},
 }) {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -38,6 +39,7 @@ function Navbar({
             value={searchValue}
             onChange={onSearchChange}
             onSubmit={onSearchSubmit}
+            onClear={onSearchClear}
           />
         </div>
 

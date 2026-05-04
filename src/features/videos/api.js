@@ -96,10 +96,25 @@ const deleteVideo = async (id) => {
   }
 };
 
+const searchVideo = async (query) => {
+  if (!query?.trim()) return [];
+
+  try {
+    const { data } = await axiosInstance.get(
+      `/videos?search=${encodeURIComponent(query.trim())}`
+    );
+
+    return data?.data;
+  } catch (error) {
+    throw handleApiError(error);
+  }
+};
+
 export {
   uploadVideo,
   getVideo,
   getVideos,
   updateVideo,
   deleteVideo,
+  searchVideo,
 };
