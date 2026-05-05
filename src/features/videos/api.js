@@ -59,7 +59,13 @@ const getVideos = async ({ page = 1, limit = 10 } = {}) => {
   }
 };
 
-const updateVideo = async ({ id, title, description, isPublised, thumbnail }) => {
+const updateVideo = async ({
+  id,
+  title,
+  description,
+  isPublised,
+  thumbnail,
+}) => {
   if (!id) {
     throw new Error("Video id is required");
   }
@@ -96,15 +102,19 @@ const deleteVideo = async (id) => {
   }
 };
 
-const searchVideo = async (query) => {
-  if (!query?.trim()) return [];
+const searchVideo = async ({ query, page = 1, limit = 10 }) => {
+  if (!query?.trim()) return { videos: [] };
 
   try {
-    const { data } = await axiosInstance.get(
-      `/videos?search=${encodeURIComponent(query.trim())}`
-    );
+    const res = await axiosInstance.get("/videos", {
+      params: {
+        search: query.trim(),
+        page,
+        limit,
+      },
+    });
 
-    return data?.data;
+    return res.data?.data;
   } catch (error) {
     throw handleApiError(error);
   }

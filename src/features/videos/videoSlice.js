@@ -5,10 +5,12 @@ import {
   getVideosThunk,
   updateVideoThunk,
   deleteVideoThunk,
+  searchVideoThunk,
 } from "./videoThunk";
 
 const initialState = {
   videos: [],
+  searchResults: [],
   selectedVideo: null,
   loading: {
     upload: false,
@@ -16,9 +18,18 @@ const initialState = {
     fetchAll: false,
     update: false,
     delete: false,
+    search: false,
   },
   error: null,
   pagination: {
+    page: 1,
+    limit: 10,
+    totalVideos: 0,
+    totalPages: 0,
+    hasNextPage: false,
+    hasPreviousPage: false,
+  },
+  searchPagination: {
     page: 1,
     limit: 10,
     totalVideos: 0,
@@ -37,6 +48,10 @@ const videoSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+    },
+    clearSearchResults: (state) => {
+      state.searchResults = [];
+      state.searchPagination = initialState.searchPagination;
     },
   },
   extraReducers: (builder) => {
@@ -130,10 +145,35 @@ const videoSlice = createSlice({
       .addCase(deleteVideoThunk.rejected, (state, action) => {
         state.loading.delete = false;
         state.error = action.payload;
+      })
+
+      // search videos
+      .addCase(searchVideoThunk.pending, (state) => {
+        state.loading.search = true;
+        state.error = null;
+      })
+      .addCase(searchVideoThunk.fulfilled, (state, action) => {
+        state.loading.search = false;
+
+        state.searchResults = action.payload?.videos || [];
+
+        state.searchPagination = {
+          page: action.payload?.page || 1,
+          limit: action.payload?.limit || 10,
+          totalVideos: action.payload?.totalVideos || 0,
+          totalPages: action.payload?.totalPages || 0,
+          hasNextPage: action.payload?.hasNextPage || false,
+          hasPreviousPage: action.payload?.hasPreviousPage || false,
+        };
+      })
+      .addCase(searchVideoThunk.rejected, (state, action) => {
+        state.loading.search = false;
+        state.error = action.payload || "Failed to search videos";
       });
   },
 });
 
-export const { clearError, clearSelectedVideo } = videoSlice.actions;
+export const { clearError, clearSelectedVideo, clearSearchResults } =
+  videoSlice.actions;
 
 export default videoSlice.reducer;

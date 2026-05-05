@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { uploadVideo, getVideo, getVideos, updateVideo, deleteVideo } from "./api";
+import { uploadVideo, getVideo, getVideos, updateVideo, deleteVideo, searchVideo } from "./api";
 
 const uploadVideoThunk = createAsyncThunk(
     "video/uploadVideo",
@@ -61,4 +61,16 @@ const deleteVideoThunk = createAsyncThunk(
     }
 )
 
-export {uploadVideoThunk, updateVideoThunk, getVideoThunk, getVideosThunk, deleteVideoThunk};
+const searchVideoThunk = createAsyncThunk(
+  "video/searchVideo",
+  async (data, thunkAPI) => {
+    try {
+      const res = await searchVideo(data);
+      return res;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message || error);
+    }
+  }
+);
+
+export {uploadVideoThunk, updateVideoThunk, getVideoThunk, getVideosThunk, deleteVideoThunk, searchVideoThunk};
